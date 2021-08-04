@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class MovieEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    protected $movie;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($movie)
     {
-        //
+        $this->movie=$movie;
     }
 
     /**
@@ -28,6 +28,6 @@ class MovieEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('view.emails.movie',compact('movie'));
     }
 }

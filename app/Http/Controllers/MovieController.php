@@ -16,6 +16,8 @@ use App\UseCases\Movie\Update;
 use App\UseCases\Movie\Show;
 use App\UseCases\Movie\Destroy;
 use App\UseCases\Movie\Assign;
+use App\UseCases\Movie\Send;
+
 use GuzzleHttp\Client;
 
 class MovieController extends Controller
@@ -29,6 +31,19 @@ class MovieController extends Controller
         ]);
 
         return $result= $res->getBody();
+    }
+
+
+    public function send(
+        Send $send,
+        Requests $request
+    )
+    {
+        $send->execute($request);
+
+        return response()->json([
+            'message' => 'Correo enviado!'
+        ]);
     }
 
     public function store(
