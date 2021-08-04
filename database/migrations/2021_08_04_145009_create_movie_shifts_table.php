@@ -14,8 +14,16 @@ class CreateMovieShiftsTable extends Migration
     public function up()
     {
         Schema::create('movie_shifts', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('movie_id');
+            $table->unsignedBigInteger('shift_id');
+
+            $table->foreign('shift_id')->references('id')->on('shifts')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+
+            $table->foreign('movie_id')->references('id')->on('movies')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
         });
     }
 

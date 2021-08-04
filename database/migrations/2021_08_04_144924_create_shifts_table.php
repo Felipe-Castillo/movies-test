@@ -15,7 +15,12 @@ class CreateShiftsTable extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
+
+            $table->string('shift_hour')->nullable();
+            $table->enum('status', ['active', 'inactive']);    
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
