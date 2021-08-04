@@ -21,14 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');
+Route::post('logout', 'AuthController@logout');
 
-Route::group(function(){
 
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::get('me', 'AuthController@me');
 
-    Route::resources([
+Route::post('refresh', 'AuthController@refresh');
+Route::get('me', 'AuthController@me');
+Route::resources([
 
         // peliculas
         '/movies'          => 'MovieController', 
@@ -40,9 +39,7 @@ Route::group(function(){
     ]);
 
     //movies
-
-    Route::get('api-movies', 'MovieController@getData');
-
+Route::get('api-movies', 'MovieController@getData');
 
 
-  });
+
