@@ -10,9 +10,13 @@
 	<a href="https://websolutionstuff.com">Movies</a>
 </h2>
 </center>
-  
-<p>Hi,{{$movie->id}}</p>
-<p>This is test mail. This mail send using queue listen in laravel 7/8.</p>  
+<div></div>
+
+ <p>Movie Name:{{$movie->name}}</p>
+ <p>Movie date:{{date('d-m-Y', strtotime(
+$movie->publication_date))}}</p>
+
+<p>This is test mail. This mail send using queue.</p>  
 <strong>Thanks & Regards.</strong>
 
 </body>

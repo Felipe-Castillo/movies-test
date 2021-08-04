@@ -8,23 +8,25 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use App\Mail\MovieEmail;
+use App\Models\Movie;
+
 use Mail;
 
 class MovieEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     protected $send_mail;
-    protected $movie;
+    protected $movie_id;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($send_mail,$movie)
+    public function __construct($send_mail, $movie_id)
     {
         $this->send_mail = $send_mail;
-        $this->movie = $movie;
+        $this->movie_id = $movie_id;
 
     }
 
@@ -35,7 +37,21 @@ class MovieEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        $email = new MovieEmail($this->movie);        
-        Mail::to($this->send_mail)->send($email);
+
+        $m=Movie::find($this->movie_id);
+    try {
+        Mail::to($this->send_mail)->send(new MovieEmail($m));
     }
+    catch(Exception $e) {
+        $this->failed($e);
+    }
+      
+    }
+
+public function failed($exception)
+{
+    $exception->getMessage();
+    // etc...
+}
+
 }

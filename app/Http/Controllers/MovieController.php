@@ -27,8 +27,7 @@ class MovieController extends Controller
     {
 
         $client = new Client();
-        $res = $client->request('GET', '/api/movies/get-movies', []
-        ]);
+        $res = $client->get('/api/movies/get-movies');
 
         return $result= $res->getBody();
     }
@@ -36,10 +35,12 @@ class MovieController extends Controller
 
     public function send(
         Send $send,
-        Requests $request
+        Request $request
     )
     {
-        $send->execute($request);
+
+
+         $send->execute($request);
 
         return response()->json([
             'message' => 'Correo enviado!'

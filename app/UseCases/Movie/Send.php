@@ -18,7 +18,7 @@ class Send
 
     public function __construct(
         Movie $movie,
-        User $user,
+        User $user
 
     )
     {
@@ -30,11 +30,10 @@ class Send
     public function execute(Request $request)
     {
   
-    $email=$this->user->find($request->user_id)->email;
-    $movie=$this->movie->find($request->movie_id);
+     $email=$this->user->find($request->user_id)->email;
 
   
-    dispatch(new MovieEmailJob($email,$movie));
+    dispatch(new MovieEmailJob($email,$request->movie_id));
 
     return $email;
 

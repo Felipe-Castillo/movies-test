@@ -6,17 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Movie;
 
 class MovieEmail extends Mailable
 {
     use Queueable, SerializesModels;
-    protected $movie;
+    
+    public $movie;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($movie)
+    public function __construct( Movie $movie)
     {
         $this->movie=$movie;
     }
@@ -28,6 +30,6 @@ class MovieEmail extends Mailable
      */
     public function build()
     {
-        return $this->view('view.emails.movie',compact('movie'));
+        return $this->view('emails.movie');
     }
 }
