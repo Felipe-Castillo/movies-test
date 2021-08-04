@@ -1,0 +1,38 @@
+
+	[
+		{
+			"name": "Terminator",
+			"publication_date": "1970-08-04",
+			"status": "active",
+			"genre_id": "1"
+			
+		},
+		{
+			"name": "Rocky",
+			"publication_date": "1970-11-14",
+			"status": "active",
+			"genre_id": "1"
+			
+		},
+		{
+			"name": "Rambo",
+			"publication_date": "1980-12-01",
+			"status": "active",
+			"genre_id": "1"
+			
+		},
+		{
+			"name": "Suenos de libertad",
+			"publication_date": "1990-02-14",
+			"status": "active",
+			"genre_id": "1"
+		
+		},
+		{
+			"name": "El aro",
+			"publication_date": "2001-07-01",
+			"status": "active",
+			"genre_id": "3"
+		
+		}
+	]

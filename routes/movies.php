@@ -8,6 +8,5 @@ Route::group([
 
      Route::post('shift-assign', 'MovieController@shift_assign');
 
-     Route::get('get-movies', 'MovieController@get');
 
 });

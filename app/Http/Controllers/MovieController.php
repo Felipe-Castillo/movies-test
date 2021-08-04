@@ -23,14 +23,9 @@ use GuzzleHttp\Client;
 class MovieController extends Controller
 {
    
-	 public function getData()
-    {
+	 
 
-        $client = new Client();
-        $res = $client->get('/api/movies/get-movies');
-
-        return $result= $res->getBody();
-    }
+   
 
 
     public function send(
@@ -109,6 +104,17 @@ class MovieController extends Controller
             'message' => "Pelicula eliminada!"
         ]);
     }
+
+      public function destroy_all(
+        Destroy $destroy
+    )
+    {
+
+        $destroy->destroy_all();
+
+       
+    }
+  
   
 
 }
