@@ -12,6 +12,8 @@ use App\Http\Requests\Movie\AssignRequest;
 
 use App\Datatables\Movie\MovieDataTable;
 use App\UseCases\Movie\Create;
+use App\UseCases\Movie\CreateHttp;
+
 use App\UseCases\Movie\Update;
 use App\UseCases\Movie\Show;
 use App\UseCases\Movie\Destroy;
@@ -21,15 +23,28 @@ use GuzzleHttp\Client;
 class MovieController extends Controller
 {
    
-	 public function getData()
+	public function get(CreateHttp $create_http)
     {
 
-        $client = new Client();
-        $res = $client->request('GET', '/api/movies/get-movies', []
-        ]);
+    $client = new \GuzzleHttp\Client();
 
-        return $result= $res->getBody();
+    $request = $client->get('https://pokeapi.co/api/v2/pokemon?limit=151');
+    $response = $request->getBody()->getContents();
+   
+    $data=json_decode($response,true);
+
+
+    #store
+
+     $create_http->execute($data);
+
+      return response()->json([
+            'message' => 'Datos extraidos con exito!'
+        ]);
     }
+
+
+    
 
     public function store(
         CreateRequest $request,
