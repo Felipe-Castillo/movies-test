@@ -4,6 +4,7 @@ namespace App\UseCases\Movie;
 
 use App\Models\Movie;
 use App\Models\Genre;
+use App\User;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -13,16 +14,19 @@ class CreateHttp
 {
     private $movie;
     private $genre;
+    private $user;
 
 
     public function __construct(
         Movie $movie,
-        Genre $genre
+        Genre $genre,
+        User $user
 
     )
     {
         $this->movie = $movie;
         $this->genre = $genre;
+        $this->user = $user;
 
     }
 
@@ -33,6 +37,7 @@ class CreateHttp
 
     $this->genre->firstOrCreate(["name"=>"Animacion"]);
 
+    $this->user->firstOrCreate(["name"=>"test","email"=>"test@mail.com","password"=>bcrypt("12345")]);
 
     foreach ($data["results"] as $key => $value) 
     {
