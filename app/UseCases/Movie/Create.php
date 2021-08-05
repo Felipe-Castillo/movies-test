@@ -9,7 +9,7 @@ use Carbon;
 
 class Create
 {
-    private $movia;
+    private $movie;
 
 
     public function __construct(
@@ -25,24 +25,16 @@ class Create
     {
   
 
-       $path = "public/images";
-
-     if(!Storage::exists($path)){
-    Storage::makeDirectory($path,0777);
-     }
 
 
        $movie = $this->movie->create($request->all());
-       $image_name='images/'.$movie->id.'/'.$request["cover"]["filename"];
        
-       Storage::disk('public')->put($image_name,base64_decode($request["cover"]["value"]));
 
 
         $publication_date=Carbon\Carbon::parse($request->publication_date)->format('Y-m-d');
         
 
         $movie->publication_date=$publication_date;
-        $movie->image=$image_name;
         $movie->save();
 
 

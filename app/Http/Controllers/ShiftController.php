@@ -44,6 +44,7 @@ class ShiftController extends Controller
         Update $update
     )
     {
+
         $update->execute($request->all());
 
         return response()->json([
@@ -69,7 +70,7 @@ class ShiftController extends Controller
     )
     {
 
-        return $destroy->execute($id);
+         $destroy->execute($id);
 
         return response()->json([
             'message' => "Turno eliminado!"

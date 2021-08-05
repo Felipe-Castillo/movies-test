@@ -25,7 +25,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'shift_hour'   => 'required',
-            'status'   => 'required',
+            //'status'   => 'required',
        
         ];
     }
@@ -35,7 +35,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'shift_hour'     => 'Turno',
-            'status'   => 'Estado',
+            //'status'   => 'Estado',
 
         ];
     }

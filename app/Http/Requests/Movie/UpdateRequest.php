@@ -26,8 +26,6 @@ class UpdateRequest extends FormRequest
         return [
             'name'   => 'required',
             'publication_date'   => 'required|date',
-            'status'   => 'required',
-            'cover'   => 'required',
        
         ];
     }
@@ -38,8 +36,6 @@ class UpdateRequest extends FormRequest
         return [
             'name'     => 'Nombre',
             'publication_date'     => 'Fecha de Publicacion',
-            'status'   => 'Estado',
-            'cover'    => 'Imagen'
         ];
     }
 

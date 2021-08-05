@@ -23,7 +23,7 @@ class Movie extends Model
 
       public function shifts()
     {
-    	return $this->belongsToMany(Shift::class,'movie_shift','movie_id','shift_id');
+    	return $this->belongsToMany(Shift::class,'movie_shifts','movie_id','shift_id');
     }
 
     public function genre()

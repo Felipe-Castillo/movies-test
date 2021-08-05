@@ -38,8 +38,7 @@ Route::resources([
         
     ]);
 
-    //movies
-Route::get('api-movies', 'MovieController@getData');
+
 
 
 
